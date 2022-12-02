@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from .models import *
+from django.contrib import messages
 
 # Create your views here.
 def index(request):
@@ -17,7 +18,8 @@ def contact(request):
             description = request.POST['message'],
         )
         new_message.save()
-        return redirect('contact')
-    
+        messages.success(request, "Message sent successfully!")
+        return redirect('index')
+
     return render(request, 'resume/contact.html')
 

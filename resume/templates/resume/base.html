@@ -14,7 +14,8 @@
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
         <!-- Font Awesome icons (free version)-->
-        
+        <link rel="stylesheet" href="https://fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng95iP4dIRy0EXTlnuz47vAwmeGwVChign" crossorigin="anonymous">
+        <script src="https://kit.fontawesome.com/11873e64c7.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet"
@@ -68,5 +69,44 @@
         <!-- Core theme JS-->
         <script src="{% static 'assets/js/scripts.js' %}"></script>
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+        {% for message in messages %}
+            {% if message.tags == "success" %}
+            <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+                integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
+                </script>
+            <script>
+                $(document).ready(function () {
+                    $("exampleModal").modal('show');
+                });
+            </script>
+            {% endif %}
+        {% endfor %}
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-center">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="justify-content-center">
+                            <h6 class="modal-title fs-5" id="exampleModalLabel"><i class="fas fa-check"></i>&nbsp;&nbsp;
+                                Perfect!</h6>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <div class="text-center tmt-3">
+                            <i class="far fa-check-circle fa-6x" style="color: #a5dc86"></i>
+                        </div>
+                        <br>
+                        <div class="mb-3"><strong>Message sent successfully!</strong></div>
+                        <h6 style="font-size: 12px;">I will contact you as soon as possible. Thanks!</h6>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal"
+                            style="width: 65px;">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
